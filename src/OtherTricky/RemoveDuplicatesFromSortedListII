@@ -8,6 +8,10 @@ public class RemoveDuplicatesFromSortedListII {
     Given a sorted linked list, delete all nodes that have duplicate numbers, leaving only distinct numbers from the original list.
 
     Return the linked list sorted as well.
+
+    有两种特殊情况要考虑：
+    链表头部出现重复：申请一个头前结点，并且更新头节点
+    链表尾部出现重复：循环结束，判断下快慢指针是否不相邻，若不相邻，慢指针的下一位置空
 */
 
     public ListNode deleteDuplicates(ListNode head) {
