@@ -4,7 +4,7 @@ import java.util.LinkedList;
 import java.util.Stack;
 
 public class ReversePrint {
-    public class ListNode {
+    private class ListNode {
         int val;
         ListNode next;
 
