@@ -1,5 +1,7 @@
 package BinaryTree;
 
+import com.zzy.TreeNode;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,24 +12,6 @@ public class UniqueBinarySearchTreesII {
 
     //Given an integer n, generate all structurally unique BST's (binary search trees) that store values 1 ... n.
 
-    private class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode() {
-        }
-
-        TreeNode(int val) {
-            this.val = val;
-        }
-
-        TreeNode(int val, TreeNode left, TreeNode right) {
-            this.val = val;
-            this.left = left;
-            this.right = right;
-        }
-    }
 
     public List<TreeNode> generateTrees(int n) {
         if (n == 0)
