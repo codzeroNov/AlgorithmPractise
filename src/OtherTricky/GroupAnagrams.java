@@ -10,8 +10,8 @@ public class GroupAnagrams {
 
     public List<List<String>> groupAnagrams(String[] strs) {
         if (strs == null || strs.length == 0) return null;
-
-        HashMap<String, List> map = new HashMap<>();
+        //当且仅当它们的排序字符串相等时，两个字符串是字母异位词。
+        HashMap<String, ArrayList<String>> map = new HashMap<>();
 
         for (String s : strs) {
             char[] c = new char[26];
