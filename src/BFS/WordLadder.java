@@ -36,7 +36,7 @@ public class WordLadder {
                         if (c == wa[j])
                             continue;
                         wa[j] = c;
-                        String nw = String.valueOf(wa);
+                        String nw = String.valueOf(wa);//next word
                         if (dict.contains(nw) && visited.add(nw))
                             q.offer(nw);
                     }
@@ -62,7 +62,7 @@ public class WordLadder {
         endSet.add(endWord);
         int len = 1;
         while (!beginSet.isEmpty() && !endSet.isEmpty()) {
-            //swap two queues, we process on the larger one
+            //swap two queues, we process on the smaller one
             if (beginSet.size() > endSet.size()) {
                 HashSet<String> swap = beginSet;
                 beginSet = endSet;
