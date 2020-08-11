@@ -15,7 +15,7 @@ public class AddAndSearchWord {
         TrieNode[] children = new TrieNode[26];
     }
 
-    private TrieNode root = new TrieNode();;
+    private TrieNode root = new TrieNode();
 
     /**
      * Adds a word into the data structure.
@@ -40,10 +40,9 @@ public class AddAndSearchWord {
     private boolean match(char[] chs, int idx, TrieNode node) {
         if (idx == chs.length) return node.isWord;
         if (chs[idx] == '.') {
-            for (int i = 0; i < node.children.length; i++) {
+            for (int i = 0; i < node.children.length; i++)
                 if (node.children[i] != null && match(chs, idx + 1, node.children[i]))
                     return true;
-            }
         } else {
             return node.children[chs[idx] - 'a'] != null && match(chs, idx + 1, node.children[chs[idx] - 'a']);
         }
