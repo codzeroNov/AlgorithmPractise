@@ -16,7 +16,7 @@ public class CountCompleteTreeNodes {
         return root == null ? 0 : 1 + countNodes(root.left) + countNodes(root.right);
     }
 
-    //space
+    //space:O(d), time:O((logN)^2)
     public int countNodes2(TreeNode root) {
         if (root == null) return 0;
 
