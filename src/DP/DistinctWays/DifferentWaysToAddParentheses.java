@@ -126,10 +126,11 @@ public class DifferentWaysToAddParentheses {
             num = 0;
             ops.add(c);
         }
+        nums.add(num);
 
         // initialize dp array
         int N = nums.size();
-        List<Integer>[][] dp = new ArrayList<>[N][N];
+        ArrayList<Integer>[][] dp = (ArrayList<Integer>[][]) new ArrayList[N][N];
         for (int i = 0; i < N; i++) {
             dp[i][i] = new ArrayList<>();
             dp[i][i].add(nums.get(i));
@@ -140,7 +141,7 @@ public class DifferentWaysToAddParentheses {
             for (int l = 0; l < N; l++) {
                 int r = l + n - 1;
                 if (r >= N) break;
-                List<Integer> sub = new ArrayList<>();
+                ArrayList<Integer> sub = new ArrayList<>();
 
                 for (int opIdx = l; opIdx < r; opIdx++) {
                     List<Integer> list1 = dp[l][opIdx];
