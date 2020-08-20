@@ -1,4 +1,4 @@
-package DP.GetMinMaxValues;
+package DP.MergingIntervals;
 
 public class MinimumScoreTriangulationOfPolygon {
     /*
