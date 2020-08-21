@@ -1,4 +1,4 @@
-package DP;
+package DP.OnString;
 
 public class LongestPalindromicSubstring {
     /*
