@@ -1,10 +1,16 @@
-import OtherTricky.QuickSort;
+import BackTrack.PalindromePartitioning;
+import DP.DistinctWays.DifferentWaysToAddParentheses;
+import DP.GetMinMaxValues.LongestIncreasingSubsequence;
+import DP.OnString.DistinctSubsequences;
+import DP.OnString.PalindromicSubstrings;
+import SlidingWindow.ContainsDuplicateII;
+import Stack.BasicCalculatorII;
 
 public class Entrance {
     static int[] nums = new int[]{1,9,5,3,4,7,6};
     public static void main(String[] args) {
-        new QuickSort().quickSort(nums, 0, 6);
-        for (int n : nums)
-            System.out.println(n);
+        new DistinctSubsequences().numDistinct3("babgbag",
+                "bag");
+
     }
 }

@@ -20,6 +20,13 @@ public class DistinctSubsequences {
         for (int j = 1; j <= n; j++) {
             for (int i = 1; i <= m; i++) {
                 if (s.charAt(i - 1) == t.charAt(j - 1))
+                /**
+                 * However, when the new incrementing character in s, s[i-1] is equal with t[j-1], which contains two case:
+                 *
+                 * We don't match those two characters, which means that it still has original number of distinct subsequences, so dp[i][j] = dp[i-1][j].
+                 * We match those two characters, in this way. dp[i][j] = dp[i-1][j-1];
+                 * Thus, including both two case, dp[i][j] = dp[i-1][j] + dp[i-1][j-1];
+                 */
                     dp[i][j] = dp[i - 1][j] + dp[i - 1][j - 1];
                 else
                     dp[i][j] = dp[i - 1][j];
