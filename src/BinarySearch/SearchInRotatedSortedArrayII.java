@@ -1,4 +1,4 @@
-package OtherTricky;
+package BinarySearch;
 
 public class SearchInRotatedSortedArrayII {
 
