@@ -34,16 +34,16 @@ public class WiggleSubsequence {
         if (nums.length < 2) return nums.length;
 
         int prevdiff = nums[1] - nums[0];
-        int count = prevdiff == 0 ? 1 : 2;
+        int len = prevdiff == 0 ? 1 : 2;
         for (int i = 2; i < nums.length; i++) {
             int currdiff = nums[i] - nums[i - 1];
-            if ((currdiff > 0 && prevdiff <= 0) || (currdiff < 0 && prevdiff >= 0)) { // using >= or <= here means that
-                count++;
+            if ((currdiff > 0 && prevdiff <= 0) || (currdiff < 0 && prevdiff >= 0)) { // prevdiff equals 0 only when we start the loop
+                len++;
                 prevdiff = currdiff;
             }
         }
 
-        return count;
+        return len;
     }
 
     // dp
