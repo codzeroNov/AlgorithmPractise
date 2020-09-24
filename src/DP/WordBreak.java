@@ -18,7 +18,7 @@ public class WordBreak {
 
         for (int i = 1; i <= s.length(); i++) {
             for (String word : wordDict) {
-                if (i >= word.length() && dp[i - word.length()] && s.substring(i - word.length(), i).equals(word))
+                if (i >= word.length() && dp[i - word.length()] && s.startsWith(word, i - word.length()))
                     dp[i] = true;
             }
         }

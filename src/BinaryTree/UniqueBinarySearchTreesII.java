@@ -10,7 +10,7 @@ import java.util.List;
 
 public class UniqueBinarySearchTreesII {
 
-    //Given an integer n, generate all structurally unique BST's (binary search trees) that store values 1 ... n.
+    //Given an integer n, generate all structurally unique BST's (binary search trees) that store values 1 ... n.
 
 
     public List<TreeNode> generateTrees(int n) {

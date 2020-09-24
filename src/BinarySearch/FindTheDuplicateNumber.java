@@ -41,7 +41,7 @@ public class FindTheDuplicateNumber {
      *
      * 2(a+b)=a+b+kL
      *
-     * 解得 a=kL-ba=kL−b，整理可得
+     * 解得 a=kL−b，整理可得
      *
      * a=(k-1)L+(L-b)=(k-1)L+c
      *

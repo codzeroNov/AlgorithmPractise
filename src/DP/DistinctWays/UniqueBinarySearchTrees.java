@@ -2,6 +2,8 @@ package DP.DistinctWays;
 
 public class UniqueBinarySearchTrees {
 
+    //Given n, how many structurally unique BST's (binary search trees) that store values 1 ... n?
+
     public int numTrees(int n) {
         int[] G = new int[n + 1];
 

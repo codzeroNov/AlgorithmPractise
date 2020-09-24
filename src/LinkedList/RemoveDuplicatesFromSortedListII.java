@@ -20,17 +20,18 @@ public class RemoveDuplicatesFromSortedListII {
         ListNode fast = head;
 
         while (fast != null && fast.next != null) {
-            if (fast.next != null && fast.val == fast.next.val) {
+            if (fast.val == fast.next.val) {
                 fast = fast.next;
                 continue;
             }
+
             if (head.next == fast) {
                 head = head.next;
-                fast = fast.next;
             } else {
-                fast = fast.next;
                 head.next = fast;
             }
+
+            fast = fast.next;
 
         }
 

@@ -17,7 +17,7 @@ public class WordSearch {
     给定 word = "ABCCED", 返回 true
     给定 word = "SEE", 返回 true
     给定 word = "ABCB", 返回 false
-             
+
 
     提示：
     board 和 word 中只包含大写和小写英文字母。
@@ -32,10 +32,9 @@ public class WordSearch {
 
         char[] w = word.toCharArray();
         boolean[][] visited = new boolean[board.length][board[0].length];
-        int wordIdx = 0;
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[0].length; j++) {
-                if (w[wordIdx] == board[i][j] && bfs(board, i, j, w, wordIdx, visited))
+                if (w[0] == board[i][j] && bfs(board, i, j, w, 0, visited))
                     return true;
             }
         }

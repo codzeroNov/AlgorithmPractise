@@ -39,9 +39,9 @@ public class MinimumNumberofKConsecutiveBitFlips {
 /*
         Explanation
         Create a new array isFlipped[n].
-        isFlipped[i] = 1 iff we flip K consecutive bits starting at A[i].
+        isFlipped[i] = 1 if we flip K consecutive bits starting at A[i].
 
-        We maintain a variable flipped and flipped = 1 iff the current bit is flipped.
+        We maintain a variable flipped and flipped = 1 if the current bit is flipped.
 
         If flipped = 0 and A[i] = 0, we need to flip at A[i].
         If flipped = 1 and A[i] = 1, we need to flip at A[i].
