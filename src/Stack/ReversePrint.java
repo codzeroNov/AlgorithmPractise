@@ -1,4 +1,4 @@
-package OtherTricky;
+package Stack;
 
 import java.util.LinkedList;
 import java.util.Stack;

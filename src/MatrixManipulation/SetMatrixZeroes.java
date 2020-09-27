@@ -1,4 +1,4 @@
-package OtherTricky;
+package MatrixManipulation;
 
 public class SetMatrixZeroes {
 /*
@@ -55,8 +55,8 @@ public class SetMatrixZeroes {
             }
         }
 
-        for (int i = m - 1; i >= 0 ; i--) {
-            for (int j = n - 1; j >= 1 ; j--) {
+        for (int i = m - 1; i >= 0; i--) {
+            for (int j = n - 1; j >= 1; j--) {
                 if (matrix[i][0] == 0 || matrix[0][j] == 0)
                     matrix[i][j] = 0;
             }

@@ -1,4 +1,4 @@
-package OtherTricky;
+package MatrixManipulation;
 
 public class RotateImage {
 /*

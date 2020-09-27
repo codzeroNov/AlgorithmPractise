@@ -40,7 +40,7 @@ public class ReverseWordsInAString {
 
         while (r < end) {
             while (r < end && c[r] == ' ') r++;//skip spaces
-            while (r < end && c[r] != ' ' ) c[l++] = c[r++];//copy to previous position
+            while (r < end && c[r] != ' ') c[l++] = c[r++];//copy to previous position
             while (r < end && c[r] == ' ') r++;//skip spaces. if r reaches tail, the next line won't work.
             if (r < end) c[l++] = ' ';
         }

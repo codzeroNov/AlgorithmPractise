@@ -1,13 +1,13 @@
-package OtherTricky;
+package MatrixManipulation;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class SpiralMatrix {
 /*
-    给定一个包含 m x n 个元素的矩阵（m 行, n 列），请按照顺时针螺旋顺序，返回矩阵中的所有元素。
+    给定一个包含 m x n 个元素的矩阵（m 行, n 列），请按照顺时针螺旋顺序，返回矩阵中的所有元素。
 
-    示例 1:
+    示例 1:
     输入:
             [
             [ 1, 2, 3 ],
@@ -16,7 +16,7 @@ public class SpiralMatrix {
             ]
     输出: [1,2,3,6,9,8,7,4,5]
 
-    示例 2:
+    示例 2:
     输入:
             [
             [1, 2, 3, 4],
