@@ -27,21 +27,21 @@ public class GrumpyBookstoreOwner {
 
     public int maxSatisfied(int[] customers, int[] grumpy, int X) {
 
-        int max = 0, windowOfUnsatisfied = 0, satisfied = 0;
+        int max = 0, windowToBeSatisfied = 0, satisfied = 0;
 
         for (int i = 0; i < grumpy.length; i++) {
 
             if (grumpy[i] == 0) {
                 satisfied += customers[i];
             } else {
-                windowOfUnsatisfied += customers[i];
+                windowToBeSatisfied += customers[i];
             }
 
             if (i >= X) {
-                windowOfUnsatisfied -= customers[i - X] * grumpy[i - X];
+                windowToBeSatisfied -= customers[i - X] * grumpy[i - X];
             }
 
-            max = Math.max(windowOfUnsatisfied, max);
+            max = Math.max(windowToBeSatisfied, max);
         }
 
         return satisfied + max;
