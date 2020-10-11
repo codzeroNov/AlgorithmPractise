@@ -1,4 +1,4 @@
-package Prefix;
+package MatrixManipulation;
 
 import java.util.HashMap;
 
@@ -36,6 +36,8 @@ public class NumberOfSubmatricesThatSumToTarget {
 
         for (int i = 0; i < n; i++) {
             for (int j = i; j < n; j++) {
+                // i ~ j, for every possible range between two columns,
+                // accumulate the prefix sum of submatrices that can be formed between these two columns by adding up the sum of values between these two columns for every row
                 HashMap<Integer, Integer> freq = new HashMap<>();
                 freq.put(0, 1);
                 int cur = 0;
