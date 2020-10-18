@@ -33,7 +33,7 @@ public class WordLadder {
                 for (int j = 0; j < w.length(); j++) {
                     char[] wa = w.toCharArray();
                     for (char c = 'a'; c <= 'z'; c++) {
-                        if (c == wa[j])
+                        if (c == w.charAt(j))
                             continue;
                         wa[j] = c;
                         String nw = String.valueOf(wa);//next word
