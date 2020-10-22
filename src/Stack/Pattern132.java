@@ -64,11 +64,11 @@ public class Pattern132 {
                 min = num;
             } else {
                 while (!stack.isEmpty()) {
-                    if (stack.peek() >= num) break;//ak >= aj
-                    stack.pop();
-                    if (stack.peek() < num) return true;
+                    if (stack.peek() >= num) break;//ai >= ak
+                    stack.pop();//pop ai
+                    if (stack.pop() > num) return true;//aj > ak
                 }
-                //push max first then push min using the same stack
+                //push max first then push min using the same stack.
                 stack.push(num);
                 stack.push(min);
             }
