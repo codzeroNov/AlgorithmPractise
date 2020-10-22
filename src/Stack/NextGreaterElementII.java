@@ -24,8 +24,7 @@ public class NextGreaterElementII {
             while (!stack.isEmpty() && nums[stack.peek()] < nums[i])
                 res[stack.pop()] = nums[i];
 
-            if (i < len)
-                stack.push(i);
+            stack.push(i);
         }
 
         return res;
