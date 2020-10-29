@@ -22,7 +22,7 @@ public class DominoAndTrominoTiling {
     XYZ YYZ XZZ XYY XXY
 
     Note:
-    N  will be in range [1, 1000].
+    N will be in range [1, 1000].
 */
 
 
