@@ -1,5 +1,8 @@
 package DP;
 
+import java.util.LinkedList;
+import java.util.Stack;
+
 public class LongestValidParentheses {
 /*
     给定一个只包含 '(' 和 ')' 的字符串，找出最长的包含有效括号的子串的长度。
@@ -62,6 +65,24 @@ public class LongestValidParentheses {
                 max = Math.max(max, 2 * left);
             if (left > right)
                 left = right = 0;
+        }
+
+        return max;
+    }
+
+
+    public int longestValidParentheses3(String s) {
+        LinkedList<Integer> stack = new LinkedList<>();
+        stack.push(-1);
+        int max = 0;
+
+        for (int i  = 0; i < s.length(); i++) {
+            if (s.charAt(i) == ')' && stack.size() > 1 && s.charAt(stack.peek()) == '(') {
+                stack.pop();
+                max = Math.max(max, i - stack.peek());
+            } else {
+                stack.push(i);
+            }
         }
 
         return max;
