@@ -47,7 +47,44 @@ public class AddTwoNumbersII {
         }
 
         return pre;
+    }
 
+    // reverse two linked list
+    public ListNode addTwoNumbers2(ListNode l1, ListNode l2) {
+        ListNode newL1Head = ReverseLinkedList(l1);
+        ListNode newL2Head = ReverseLinkedList(l2);
+
+        int sum = 0;
+        ListNode dummy = new ListNode(0);
+        ListNode prev = dummy;
+        while (newL1Head != null || newL2Head != null || sum != 0) {
+            if (newL1Head != null) {
+                sum += newL1Head.val;
+                newL1Head = newL1Head.next;
+            }
+            if (newL2Head != null) {
+                sum += newL2Head.val;
+                newL2Head = newL2Head.next;
+            }
+            ListNode newNode = new ListNode(sum % 10);
+            sum = sum / 10;
+            prev.next = newNode;
+            prev = newNode;
+        }
+
+        return ReverseLinkedList(dummy.next);
+    }
+
+    private ListNode ReverseLinkedList(ListNode head) {
+        ListNode prev = null;
+        while (head != null) {
+            ListNode next = head.next;
+            head.next = prev;
+            prev = head;
+            head = next;
+        }
+
+        return prev;
     }
 
 }

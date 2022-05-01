@@ -4,7 +4,7 @@ import com.zzy.ListNode;
 
 public class ReverseLinkedList {
 
-    public ListNode reverseList(ListNode head) {
+    public ListNode ReverseList(ListNode head) {
 
         ListNode pre = null;
         while (head != null) {
