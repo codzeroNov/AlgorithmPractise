@@ -11,31 +11,29 @@ public class RemoveDuplicatesFromSortedListII {
 */
 
     public ListNode deleteDuplicates(ListNode head) {
-        if (head == null || head.next == null)
-            return head;
+        if (head == null || head.next == null) return head;
 
         ListNode dummy = new ListNode(0);
         dummy.next = head;
         head = dummy;
-        ListNode fast = head;
+        ListNode curr = head;
 
-        while (fast != null && fast.next != null) {
-            if (fast.val == fast.next.val) {
-                fast = fast.next;
+        while (curr != null) {
+            if (curr.next != null && curr.val == curr.next.val) {
+                curr = curr.next;
                 continue;
             }
 
-            if (head.next == fast) {
-                head = head.next;
+            if (head.next != curr) {
+                head.next = curr.next;
             } else {
-                head.next = fast;
+                head = head.next;
             }
 
-            fast = fast.next;
-
+            curr = curr.next;
         }
 
-        if (head.next != fast) head.next = null;
+
         return dummy.next;
     }
 }
