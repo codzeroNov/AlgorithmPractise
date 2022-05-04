@@ -20,7 +20,7 @@ public class ReverseLinkedListII {
         dummy.next = head;
         ListNode start, prev, then;
 
-        //nodes' indexs start form 1
+        //node's index starts form 1
         prev = dummy;
         for (int i = 0; i < m - 1; i++)
             prev = prev.next;
