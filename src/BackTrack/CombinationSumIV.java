@@ -30,26 +30,26 @@ public class CombinationSumIV {
     How does it change the problem?
     What limitation we need to add to the question to allow negative numbers?
 */
-
-    List<List<Integer>> lists;
-
+    // there is a bug in this question's description: it should be combination, not permutation.
     public int combinationSum4(int[] nums, int target) {
         if (nums == null || nums.length == 0) return 0;
-        lists = new ArrayList<>();
-        backtrack(nums, target, new ArrayList<>(), 0);
-        return lists.size();
+        List<List<Integer>> res = new ArrayList<>();
+        backTrack(res, new ArrayList<>(), 0, nums, target);
+
+        return res.size();
     }
 
-    private void backtrack(int[] nums, int remain, ArrayList<Integer> tmpList, int start) {
-        if (remain == 0) lists.add(new ArrayList<>(tmpList));
-        else if (remain < 0) return;
-        else {
-            for (int i = start; i < nums.length; i++) {
-                tmpList.add(nums[i]);
-                backtrack(nums, remain - nums[i], tmpList, i);
-                tmpList.remove(tmpList.size() - 1);
-            }
+    private void backTrack(List<List<Integer>> res, List<Integer> sub, int start, int[] nums, int target) {
+        if (target == 0) {
+            res.add(new ArrayList<>(sub));
+            return;
+        }
+        if (target < 0)
+            return;
+        for (int i = start; i < nums.length; i++) {
+            sub.add(nums[i]);
+            backTrack(res, sub, i, nums, target - nums[i]);
+            sub.remove(sub.size()-1);
         }
     }
-
 }
