@@ -48,7 +48,6 @@ public class AdditiveNumber {
         int n = num.length();
 
         for (int i = 1; i <= n / 2; i++) {
-            if (num.charAt(0) == '0' && i > 1) return false;
             for (int j = 1; Math.max(i, j) <= n - i - j; j++) {
                 if (isValid(num, i, j))
                     return true;
@@ -59,6 +58,7 @@ public class AdditiveNumber {
     }
 
     private boolean isValid(String num, int i, int j) {
+        if (num.charAt(0) == '0' && i > 1) return false;
         if (num.charAt(i) == '0' && j > 1) return false;
         BigInteger x = new BigInteger(num.substring(0, i));
         BigInteger y = new BigInteger(num.substring(i, i + j));
