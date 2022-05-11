@@ -17,6 +17,45 @@ public class CourseSchedule {
 
     //bfs
     public boolean canFinish1(int numCourses, int[][] prerequisites) {
+        /*
+        //easy to read:
+
+        if (prerequisites == null || prerequisites.length == 0)
+            return true;
+
+        int[] indegree = new int[numCourses];
+        Map<Integer, List<Integer>> preToCourseMap = new HashMap<>();
+        Queue<Integer> reachableNodes = new LinkedList<>();
+        for (int i = 0; i < numCourses; i++) {
+            preToCourseMap.put(i, new ArrayList<>());
+        }
+
+        for (int[] pair: prerequisites) {
+            preToCourseMap.get(pair[1]).add(pair[0]);
+            indegree[pair[0]]++;
+        }
+
+        for (int i = 0; i < numCourses; i++) {
+            if (indegree[i] == 0)
+                reachableNodes.offer(i);
+        }
+
+        while (!reachableNodes.isEmpty()) {
+            int reachableNode = reachableNodes.poll();
+            numCourses--;
+            for (int course: preToCourseMap.get(reachableNode)) {
+                if (--indegree[course] == 0)
+                    reachableNodes.offer(course);
+            }
+        }
+
+        return numCourses == 0;
+    }
+        *
+        *
+        * */
+
+
         List<List<Integer>> adjacency = new ArrayList<>();
         Queue<Integer> queue = new LinkedList<>();
         int[] indegree = new int[numCourses];
