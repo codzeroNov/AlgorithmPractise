@@ -13,24 +13,25 @@ public class FindTheDuplicateNumber {
     */
     //binary search,    space O(1),    time O(NlogN)
     public int findDuplicate(int[] nums) {
-        int l = 0, r = nums.length - 1, cnt, ans = -1;
+        int l = 0, r = nums.length - 1;
 
-        while (l <= r) {
-            int target = (r - l) / 2 + l;
-            cnt = 0;
-            for (int n : nums) {
-                if (n <= target) cnt++;
-            }
+        while (l < r) {
+            int mid = (r - l)/2 + l;
+            int cnt = 0;
+            for (int n : nums)
+                if (n <= mid)
+                    cnt++;
 
-            if (cnt <= target) {
-                l = target + 1;
+
+            if (cnt <= mid) {
+                l = mid + 1;
             } else {
-                r = target - 1;
-                ans = target;
+                r = mid;
+
             }
         }
 
-        return ans;
+        return l;
     }
     // Floyd circle
 
