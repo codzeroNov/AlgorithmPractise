@@ -8,8 +8,8 @@ public class KthSmallestElementInASortedMatrix {
     Note that it is the kth smallest element in the sorted order, not the kth distinct element.
      */
 
-    //时间复杂度：O(n\log(r-l))O(nlog(r−l))，二分查找进行次数为 O(\log(r-l))O(log(r−l))，每次操作时间复杂度为 O(n)O(n)。
-    //空间复杂度：O(1)O(1)。
+    //时间复杂度：O(nlog(r−l))，二分查找进行次数为 O(log(r−l))，每次操作时间复杂度为 O(n)。
+    //空间复杂度：O(1)。
     public int kthSmallest(int[][] matrix, int k) {
         int n = matrix.length;
         int left = matrix[0][0], right = matrix[n - 1][n - 1];
