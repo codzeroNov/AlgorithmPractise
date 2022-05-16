@@ -18,7 +18,8 @@ public class SearchInRotatedSortedArray {
     输入: nums = [4,5,6,7,0,1,2], target = 3
     输出: -1
 */
-
+    // Key: if nums[mid] and target are on the same side -> easy life.
+    // If not, let's move towards the target side.
     public int search(int[] nums, int target) {
         if (nums == null || nums.length == 0)
             return -1;
