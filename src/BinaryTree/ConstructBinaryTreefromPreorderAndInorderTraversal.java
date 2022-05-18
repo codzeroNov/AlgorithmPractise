@@ -7,7 +7,6 @@ import java.util.Stack;
 
 public class ConstructBinaryTreefromPreorderAndInorderTraversal {
 
-
     public TreeNode buildTree1(int[] preorder, int[] inorder) {
         if (preorder == null || preorder.length == 0)
             return null;
@@ -26,6 +25,8 @@ public class ConstructBinaryTreefromPreorderAndInorderTraversal {
         if (pStart == pEnd)
             return root;
         int index = inMap.get(preorder[pStart]);
+        // For preorder and inorder, we move pStart for pStart + 1 in the next recurse, so pEnd should not minus 1 to avoid boundary exception,
+        // and for postorder and inorder, we move pEnd like pEnd - 1, so the pStart shouldn't minus 1 to avoid it.
         root.left = helper1(preorder, pStart + 1, pStart + index - iStart, inorder, iStart, index - 1, inMap);
         root.right = helper1(preorder, pEnd - (iEnd - index) + 1, pEnd, inorder, index + 1, iEnd, inMap);
         return root;
