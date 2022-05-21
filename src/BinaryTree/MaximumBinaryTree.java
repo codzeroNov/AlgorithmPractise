@@ -29,7 +29,7 @@ public class MaximumBinaryTree {
 */
 
 /*
-    1.traverse the array once and create the node one by one. and use stack to store a decreasing sequence.
+    1.traverse the array once and create the node one by one. and use stack to store an increasing sequence.
     2.each step, we create a new curNode. compare to the peek of stack,
         2.a keep popping the stack while (stack.peek().val < curNode.val), and set the last popping node to be curNode.left.
         Because the last one fulfilling the criteria is the largest number among curNode's left children. => curNode.left = last pop node
@@ -54,6 +54,28 @@ public class MaximumBinaryTree {
         }
 
         return stack.removeLast();
+    }
+
+    public TreeNode constructMaximumBinaryTree2(int[] nums) {
+        if (nums == null || nums.length == 0) return null;
+        return build(nums, 0, nums.length - 1);
+    }
+
+    private TreeNode build(int[] nums, int left, int right) {
+        if (left > right) return null;
+
+        int idxMax = left;
+        for (int i = left; i <= right; i++) {
+            if (nums[i] > nums[idxMax])
+                idxMax = i;
+        }
+
+        TreeNode node = new TreeNode(nums[idxMax]);
+
+        node.left = build(nums, left, idxMax - 1);
+        node.right = build(nums, idxMax + 1, right);
+
+        return node;
     }
 
 }
