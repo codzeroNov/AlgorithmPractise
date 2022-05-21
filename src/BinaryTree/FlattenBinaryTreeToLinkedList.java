@@ -5,23 +5,19 @@ import com.zzy.TreeNode;
 public class FlattenBinaryTreeToLinkedList {
 
     public void flatten(TreeNode root) {
-        while (root != null) {
-            if (root.left == null) {
-                root = root.right;
-            } else {
-                //find left subtree's most right node
-                TreeNode leftSubTreeMostRight = root.left;
-                while (leftSubTreeMostRight.right != null)
-                    leftSubTreeMostRight = leftSubTreeMostRight.right;
 
-                //merge root's right tree
-                leftSubTreeMostRight.right = root.right;
-                root.right = root.left;
-                root.left = null;
+        TreeNode curr = root;
+        while (curr != null) {
+            if (curr.left != null) {
+                TreeNode leftSubtreeMostRight = curr.left;
+                while (leftSubtreeMostRight.right != null)
+                    leftSubtreeMostRight = leftSubtreeMostRight.right;
 
-                //go next
-                root = root.right;
+                leftSubtreeMostRight.right = curr.right;
+                curr.right = curr.left;
+                curr.left = null;
             }
+            curr = curr.right;
         }
     }
 
