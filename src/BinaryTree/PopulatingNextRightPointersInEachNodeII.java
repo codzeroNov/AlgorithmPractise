@@ -80,7 +80,7 @@ public class PopulatingNextRightPointersInEachNodeII {
                 curr = curr.next;
             } else {
                 curr = nextDummyHead.next;
-                nextDummyHead.next = null;//cut the list, in case when we traverse in the leaf nodes we get a infinite loop
+                nextDummyHead.next = null;//cut the list, in case when we traverse in the leaf nodes we get an infinite loop
                 p = nextDummyHead;
             }
         }

@@ -29,9 +29,9 @@ public class UniqueBinarySearchTreesII {
         }
 
         for (int i = start; i <= end; i++) {
-            //left sub tree list
+            //left subtree list
             List<TreeNode> lstl = genTree(start, i - 1);
-            //right sub tree list
+            //right subtree list
             List<TreeNode> rstl = genTree(i + 1, end);
             for (TreeNode left : lstl) {
                 for (TreeNode right : rstl) {
