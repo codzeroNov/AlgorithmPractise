@@ -68,7 +68,7 @@ public class DifferentWaysToAddParentheses {
     }
 
     // with memorization
-    Map<String, List> map = new HashMap<>();
+    Map<String, List<Integer>> map = new HashMap<String, List<Integer>>();
     public List<Integer> diffWaysToCompute2(String input) {
         List<Integer> res = new ArrayList<>();
         if (input == null || input.length() == 0)

@@ -27,6 +27,20 @@ public class DominoAndTrominoTiling {
 
 
     public int numTilings(int N) {
+        /**
+         * For this kind of dp, usually if you write out the recursive equation for both dp[n] and dp[n-1] then do some math trick will give what you need.
+         * .
+         * .
+         * For this problem:
+         * dp[n] = dp[n-1] + dp[n-2] + 2 * (dp[n-3] + ... + dp[0]) -- E1
+         * dp[n-1] = dp[n-2] + dp[n-3] + 2 * (dp[n-4] + ... + dp[0]) -- E2
+         * .
+         * .
+         * E1 - E2:
+         * dp[n] - dp[n-1] = dp[n-1] + dp[n-3]
+         * --> dp[n] = 2*dp[n-1] + dp[n-3]
+         * **/
+
         int MOD = 1000000007;
         long[] f = new long[1001];
         f[1] = 1l;

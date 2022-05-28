@@ -38,6 +38,8 @@ public class MinimumSwapsToMakeSequencesIncreasing {
              * In this case, if we want to keep A and B increasing before the index i, can only have two choices.
              * -> 2.1 swap at (i-1) and do not swap at i, we can get notswap[i] = Math.min(swap[i-1], notswap[i] )
              * -> 2.2 do not swap at (i-1) and swap at i, we can get swap[i]=Math.min(notswap[i-1]+1, swap[i])
+             *
+
              */
             if (A[i - 1] < A[i] && B[i - 1] < B[i]) {
                 swap[i] = swap[i - 1] + 1;
@@ -50,5 +52,45 @@ public class MinimumSwapsToMakeSequencesIncreasing {
         }
 
         return Math.min(swap[N - 1], notSwap[N - 1]);
+    }
+
+
+    public int minSwap2(int[] A, int[] B) {
+        /**
+         * explain 2:
+         *
+         * state
+         * whether we swap the element at index i to make A[0..i] and B[0..i] both increasing can uniquely identify a state, i.e. a node in the state graph.
+         * state function
+         * state(i, 0) is the minimum swaps to make A[0..i] and B[0..i] both increasing if we donot swap A[i] with B[i]
+         * state(i, 1) is the minimum swaps to make A[0..i] and B[0..i] both increasing if we do swap A[i] with B[i]
+         *
+         * goal state
+         * min{state(n - 1, 0), state(n - 1, 1)} where n = A.length
+         *
+         * state transition
+         * We define areBothSelfIncreasing: A[i - 1] < A[i] && B[i - 1] < B[i], areInterchangeIncreasing: A[i - 1] < B[i] && B[i - 1] < A[i].
+         * Since 'the given input always makes it possible', at least one of the two conditions above should be satisfied.
+         * **/
+        int len = A.length;
+        int[][] dp = new int[len][2];
+        dp[0][1] = 1;
+
+        for (int i = 1; i < len; i++) {
+            boolean areBothSelfIncreasing = A[i - 1] < A[i] && B[i - 1] < B[i];
+            boolean areInterchangingIncreasing = A[i - 1] < B[i] && B[i - 1] < A[i];
+            if (areBothSelfIncreasing && areInterchangingIncreasing) {
+                dp[i][0] = Math.min(dp[i - 1][0], dp[i - 1][1]);
+                dp[i][1] = Math.min(dp[i - 1][0], dp[i - 1][1]) + 1;
+            } else if (areBothSelfIncreasing) {
+                dp[i][0] = dp[i - 1][0];
+                dp[i][1] = dp[i - 1][1] + 1;
+            } else {
+                dp[i][0] = dp[i - 1][1];
+                dp[i][1] = dp[i - 1][0] + 1;
+            }
+        }
+
+        return Math.min(dp[len - 1][0], dp[len - 1][1]);
     }
 }
