@@ -12,11 +12,11 @@ public class OutOfBoundaryPaths {
         if (N <= 0) return 0;
 
         int[][] dirs = new int[][]{{0, 1}, {-1, 0}, {0, -1}, {1, 0}};
-        int[][][] count = new int[N][m][n];
+        int[][][] count = new int[N + 1][m][n];
         count[0][i][j] = 1;
         int res = 0, MOD = 1000000007;
 
-        for (int step = 1; step < N; step++) {
+        for (int step = 1; step <= N; step++) {
             for (int r = 0; r < m; r++) {
                 for (int c = 0; c < n; c++) {
                     for (int[] dir : dirs) {

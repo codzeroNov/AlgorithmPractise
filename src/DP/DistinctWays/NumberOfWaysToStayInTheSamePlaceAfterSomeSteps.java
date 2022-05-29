@@ -11,6 +11,8 @@ public class NumberOfWaysToStayInTheSamePlaceAfterSomeSteps {
         Since the answer may be too large, return it modulo 10^9 + 7.
     */
     public int numWays(int steps, int arrLen) {
+        if (arrLen == 1) return 1;
+
         long MOD = 1000000007;
         int len = Math.min(steps, arrLen);
         long[][] ways = new long[steps + 1][len + 1];

@@ -19,7 +19,7 @@ public class NumberOfLongestIncreasingSubsequence {
     public int findNumberOfLIS(int[] nums) {
         int n = nums.length;
         int[] len = new int[n], cnt = new int[n];
-        int maxLen = 1, res = 1;
+        int maxLen = 1, res = 0;
 
         for (int i = 0; i < n; i++) {
             len[i] = cnt[i] = 1;
@@ -27,7 +27,8 @@ public class NumberOfLongestIncreasingSubsequence {
                 if (nums[i] > nums[j]) {
                     if (len[i] == len[j] + 1) {
                         cnt[i] += cnt[j];
-                    } else if (len[i] < len[j] + 1) {
+                    }
+                    if (len[i] < len[j] + 1) {
                         len[i] = len[j] + 1;
                         cnt[i] = cnt[j];
                     }
