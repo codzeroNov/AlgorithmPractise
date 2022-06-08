@@ -1,6 +1,8 @@
 package Greedy;
 
+import java.util.Deque;
 import java.util.LinkedList;
+import java.util.Queue;
 
 public class MinimumNumberofKConsecutiveBitFlips {
 /*
@@ -79,6 +81,25 @@ public class MinimumNumberofKConsecutiveBitFlips {
             }
         }
         return count;
+    }
+
+    public int minKBitFlips3(int[] nums, int k) {
+        int res = 0, n = nums.length;
+        Deque<Integer> q = new LinkedList<>();
+
+        for (int i = 0; i < n; i++) {
+            if ((q.size() % 2 == 0 && nums[i] == 0) || (q.size() % 2 == 1 && nums[i] == 1)) {
+                res++;
+                if (i + k > n)
+                    return -1;
+                q.offer(i + k - 1);
+            }
+            while (q.size() > 0 && q.peek() <= i)
+                q.remove();
+
+        }
+
+        return res;
     }
 
 }

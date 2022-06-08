@@ -1,6 +1,7 @@
 package Interval_Overlap;
 
 import java.util.Arrays;
+import java.util.Comparator;
 
 public class MinimumNumberOfArrowsToBurstBalloons {
 /*
@@ -18,7 +19,13 @@ public class MinimumNumberOfArrowsToBurstBalloons {
     public int findMinArrowShots(int[][] points) {
         if (points == null || points.length == 0) return 0;
 
-        Arrays.sort(points, (a, b) -> (a[0] - b[0]));
+        // to avoid overflow
+        Arrays.sort(points, new Comparator<int[]>() {
+            @Override
+            public int compare(int[] l, int[] r) {
+                return l[1] < r[1] ? -1 : 1;
+            }
+        });
 
         int preEnd = points[0][1], count = 1;
 

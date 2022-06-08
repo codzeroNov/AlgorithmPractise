@@ -43,4 +43,34 @@ public class MergeIntervals {
         return res.toArray(new int[0][]);
     }
 
+    public int[][] merge2(int[][] intervals) {
+        Arrays.sort(intervals, (a, b) -> (a[0] - b[0]));
+        ArrayList<int[]> res = new ArrayList<>();
+
+        int start = intervals[0][0], end = intervals[0][1];
+        for (int i = 1; i < intervals.length; i++) {
+            int[] itv = intervals[i];
+            if (end >= itv[0]) {
+                if (end < itv[1]) {
+                    end = itv[1];
+                }
+                continue;
+            }
+
+            res.add(new int[]{start, end});
+            start = itv[0];
+            end = itv[1];
+        }
+
+        res.add(new int[]{start, end});
+
+        int[][] ret = new int[res.size()][2];
+        for (int i = 0; i < res.size(); i++) {
+            ret[i][0] = res.get(i)[0];
+            ret[i][1] = res.get(i)[1];
+        }
+
+        return ret;
+    }
+
 }
