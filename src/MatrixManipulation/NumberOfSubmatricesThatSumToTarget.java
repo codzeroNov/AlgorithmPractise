@@ -1,6 +1,7 @@
 package MatrixManipulation;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class NumberOfSubmatricesThatSumToTarget {
 /*
@@ -28,26 +29,27 @@ public class NumberOfSubmatricesThatSumToTarget {
             -10^8 <= target <= 10^8
     */
     public int numSubmatrixSumTarget(int[][] matrix, int target) {
-        int res = 0, m = matrix.length, n = matrix[0].length;
+        // https://leetcode.com/problems/number-of-submatrices-that-sum-to-target/discuss/803353/Java-Solution-with-Detailed-Explanation
+        int count = 0, m = matrix.length, n = matrix[0].length;
 
         for (int i = 0; i < m; i++)
             for (int j = 1; j < n; j++)
-                matrix[i][j] += matrix[i][j-1];
+                matrix[i][j] += matrix[i][j - 1];
 
-        for (int i = 0; i < n; i++) {
-            for (int j = i; j < n; j++) {
-                // i ~ j, for every possible range between two columns,
-                // accumulate the prefix sum of submatrices that can be formed between these two columns by adding up the sum of values between these two columns for every row
-                HashMap<Integer, Integer> freq = new HashMap<>();
-                freq.put(0, 1);
-                int cur = 0;
-                for (int k = 0; k < m; k++) {
-                    cur += matrix[k][j] - (i > 0 ? matrix[k][i-1] : 0);
-                    res += freq.getOrDefault(cur - target, 0);
-                    freq.put(cur, freq.getOrDefault(cur, 0) + 1);
+        for (int start = 0; start < n; start++) {
+            for (int end = start; end < n; end++) {
+                Map<Integer, Integer> prefix = new HashMap<>();
+                prefix.put(0, 1);
+                int sum = 0;
+                for (int i = 0; i < m; i++) {
+                    sum += matrix[i][end] - (end == start ? 0 : matrix[i][start]);
+                    if (prefix.containsKey(sum - target))
+                        count += prefix.get(sum - target);
+                    prefix.put(sum, prefix.getOrDefault(sum, 0) + 1);
                 }
             }
         }
-        return res;
+
+        return count;
     }
 }
