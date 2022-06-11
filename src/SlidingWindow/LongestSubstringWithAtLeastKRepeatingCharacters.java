@@ -6,6 +6,7 @@ public class LongestSubstringWithAtLeastKRepeatingCharacters {
     such that every character in T appears no less than k times.
      */
     public int longestSubstring(String s, int k) {
+        // https://leetcode.cn/problems/longest-substring-with-at-least-k-repeating-characters/solution/xiang-jie-mei-ju-shuang-zhi-zhen-jie-fa-50ri1/
         int max = 0;
 
         for (int i = 0; i < 26; i++)

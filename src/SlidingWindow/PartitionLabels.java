@@ -1,8 +1,6 @@
 package SlidingWindow;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class PartitionLabels {
 /*
@@ -41,6 +39,54 @@ public class PartitionLabels {
         }
 
         return list;
+    }
+
+    public List<Integer> partitionLabels2(String s) {
+        List<Integer> res = new ArrayList<>();
+        Map<Character, int[]> map = new HashMap<>();
+
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            if (!map.containsKey(c)) {
+                map.put(c, new int[]{i, Integer.MIN_VALUE});
+            } else {
+                int[] arr = map.get(c);
+                arr[1] = i;
+                map.put(c, arr);
+            }
+        }
+
+        int[][] intervals = new int[map.size()][2];
+        int i = 0;
+        for (Map.Entry<Character, int[]> entry : map.entrySet()) {
+            int[] arr = entry.getValue();
+            intervals[i++] = arr;
+        }
+
+        Arrays.sort(intervals, (a, b) -> (a[0] - b[0]));
+        int prevEnd = intervals[0][1], prevStart = intervals[0][0];
+        for (i = 1; i < intervals.length; i++) {
+            if (intervals[i][0] > prevEnd) {
+                if (prevEnd == Integer.MIN_VALUE)
+                    res.add(1);
+                else
+                    res.add(prevEnd - prevStart + 1);
+                prevEnd = intervals[i][1];
+                prevStart = intervals[i][0];
+            } else {
+                prevEnd = Math.max(prevEnd, intervals[i][1]);
+            }
+        }
+        if (prevEnd == Integer.MIN_VALUE)
+            res.add(1);
+        else
+            res.add(prevEnd - prevStart + 1);
+
+        return res;
+    }
+
+    public static void main(String[] args) {
+        new PartitionLabels().partitionLabels2("eaaaabaaec");
     }
 
 }

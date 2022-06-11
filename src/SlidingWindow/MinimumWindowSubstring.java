@@ -1,9 +1,12 @@
 package SlidingWindow;
 
 
+import Stack.Pattern132;
+
 import java.util.ArrayList;
 import java.util.HashMap;
-/*
+import java.util.Map;
+
 public class MinimumWindowSubstring {
 
 /*  https://leetcode.com/problems/minimum-window-substring/
@@ -18,7 +21,7 @@ public class MinimumWindowSubstring {
     If there is no such window in S that covers all characters in T, return the empty string "".
     If there is such window, you are guaranteed that there will always be only one unique minimum window in S.
  */
-/*
+
     public String minWindow(String s, String t) {
         if (s == null || s.length() == 0 || t == null || t.length() == 0)
             return "";
@@ -56,46 +59,41 @@ public class MinimumWindowSubstring {
     }
 
     public String minWindow2(String s, String t) {
-        if (s.length() == 0 || t.length() == 0)
-            return "";
+        if (t.length() > s.length()) return "";
+        int count = 0, l = 0, r = 0, idxStart = 0, minLen = s.length() + 1;
+        Map<Character, Integer> map = new HashMap<>();
 
-        HashMap<Character, Integer> target = new HashMap<>();
         for (char c : t.toCharArray())
-            target.put(c, target.getOrDefault(c, 0) + 1);
+            map.put(c, map.getOrDefault(c, 0) + 1);
 
-        ArrayList<Pair<Integer, Character>> filterS = new ArrayList<>();
-        for (int i = 0; i < s.length(); i++) {
-            char c = s.charAt(i);
-            if (target.containsKey(c))
-                filterS.add(new Pair<>(i, c));
-        }
+        while (r < s.length()) {
+            char rc = s.charAt(r);
+            if (map.containsKey(rc)) {
+                map.put(rc, map.get(rc) - 1);
+                if (map.get(rc) >= 0)
+                    count++;
 
-        int l = 0, r = 0, count = 0;
-        int[] pos = new int[]{-1, 0, 0};
-        HashMap<Character, Integer> window = new HashMap<>();
-        while (r < filterS.size()) {
-            char c = filterS.get(r).getValue();
-            window.put(c, window.getOrDefault(c, 0) + 1);
-            if (window.get(c).intValue() == target.get(c).intValue())
-                count++;
-            while (count == target.size()) {
-                c = filterS.get(l).getValue();
-                int start = filterS.get(l).getKey();
-                int end = filterS.get(r).getKey();
-                if (end - start + 1 < pos[0] || pos[0] == -1) {
-                    pos[0] = end - start + 1;
-                    pos[1] = start;
-                    pos[2] = end;
+                while (count == t.length()) {
+                    if (minLen > r - l + 1) {
+                        minLen = r - l + 1;
+                        idxStart = l;
+                    }
+
+                    char lc = s.charAt(l);
+                    if (map.containsKey(lc)) {
+                        map.put(lc, map.get(lc) + 1);
+                        if (map.get(lc) > 0)
+                            count--;
+                    }
+                    l++;
                 }
-                window.put(c, window.get(c) - 1);
-                if (window.get(c) < target.get(c))
-                    count--;
-                l++;
             }
             r++;
         }
-        return pos[0] == -1 ? "" : s.substring(pos[1], pos[2] + 1);
+
+        if (minLen > s.length()) return "";
+
+        return s.substring(idxStart, idxStart + minLen);
     }
 
 }
-*/

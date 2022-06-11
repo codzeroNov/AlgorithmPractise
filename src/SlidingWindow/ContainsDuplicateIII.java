@@ -32,10 +32,11 @@ public class ContainsDuplicateIII {
         return false;
     }
 
-    //bucket sort, space:O(t), time:O(t)
+    //bucket sort, space:O(t), time:O(t) https://leetcode.com/problems/contains-duplicate-iii/discuss/61639/JavaPython-one-pass-solution-O(n)-time-O(n)-space-using-buckets
     private long getId(long num, long width) {
-        // make negative num do not shrinks towards 0
-        return num < 0 ? (num + 1) / width - 1 : num / width;
+        // make negative num do not shrink towards 0
+        long remappedNum = num - Integer.MIN_VALUE;
+        return remappedNum / width;
     }
 
     public boolean containsNearbyAlmostDuplicate2(int[] nums, int k, int t) {

@@ -1,4 +1,4 @@
-package MatrixManipulation;
+package PrefixSum;
 
 import java.util.HashMap;
 
