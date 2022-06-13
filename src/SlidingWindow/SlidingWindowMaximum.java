@@ -1,6 +1,8 @@
 package SlidingWindow;
 
 import java.util.ArrayDeque;
+import java.util.Deque;
+import java.util.LinkedList;
 
 public class SlidingWindowMaximum {
 
@@ -35,6 +37,29 @@ public class SlidingWindowMaximum {
 */
 
     public int[] maxSlidingWindow(int[] nums, int k) {
+        // https://leetcode.com/problems/sliding-window-maximum/discuss/65884/Java-O(n)-solution-using-deque-with-explanation
+        // monotonous deque
+
+        int n = nums.length;
+        int[] res = new int[n - k + 1];
+        Deque<Integer> q = new LinkedList<>();
+
+        for (int i = 0; i < nums.length; i++) {
+            if (!q.isEmpty() && q.peek() < i - k + 1)
+                q.poll();
+
+            while (!q.isEmpty() && nums[q.peekLast()] < nums[i])
+                q.pollLast();
+
+            q.offer(i);
+            if (i + 1 >= k)
+                res[i - k + 1] = nums[q.peek()];
+        }
+
+        return res;
+    }
+
+    public int[] maxSlidingWindow2(int[] nums, int k) {
         if (nums.length * k == 0) return new int[0];
         if (k == 1) return nums;
 

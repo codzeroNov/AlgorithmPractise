@@ -21,12 +21,9 @@ public class ImplementQueueUsingStacks {
 
         /** Removes the element from in front of queue and returns that element. */
         public int pop() {
-            if (!s2.isEmpty())
-                return s2.pop();
-            else {
+            if (s2.isEmpty())
                 trans();
-                return s2.pop();
-            }
+            return s2.pop();
         }
 
         private void trans() {
@@ -36,12 +33,9 @@ public class ImplementQueueUsingStacks {
 
         /** Get the front element. */
         public int peek() {
-            if (!s2.isEmpty())
-                return s2.peek();
-            else {
+            if (s2.isEmpty())
                 trans();
-                return s2.peek();
-            }
+            return s2.peek();
         }
 
         /** Returns whether the queue is empty. */

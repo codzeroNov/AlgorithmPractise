@@ -25,6 +25,25 @@ public class Pattern132 {
     Explanation: There are three 132 patterns in the sequence: [-1, 3, 2], [-1, 3, 0] and [-1, 2, 0].
     */
 
+    // https://leetcode.cn/problems/132-pattern/solution/132mo-shi-by-leetcode-solution-ye89/
+    public boolean find132pattern(int[] nums) {
+        int n = nums.length, maxK = Integer.MIN_VALUE;
+        Stack<Integer> stack = new Stack<>();
+        stack.push(nums[n - 1]);
+
+        for (int i = n - 2; i >= 0; i--) {
+            if (nums[i] < maxK)
+                return true;
+
+            while (!stack.isEmpty() && stack.peek() < nums[i])
+                maxK = stack.pop();
+
+            stack.push(nums[i]);
+        }
+
+        return false;
+    }
+
     class Pair {
         int min, max;
 
@@ -34,7 +53,7 @@ public class Pattern132 {
         }
     }
 
-    public boolean find132pattern(int[] nums) {
+    public boolean find132pattern3(int[] nums) {
         Stack<Pair> stack = new Stack();
         for (int n : nums) {
             if (stack.isEmpty() || n < stack.peek().min)
