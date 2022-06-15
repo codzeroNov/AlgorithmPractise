@@ -12,6 +12,8 @@ public class GasStation {
         Both input arrays are non-empty and have the same length.
         Each element in the input arrays is a non-negative integer.
     */
+
+    // https://leetcode.com/problems/gas-station/discuss/1706142/JavaC%2B%2BPython-An-explanation-that-ever-EXISTS-till-now!!!!
     public int canCompleteCircuit(int[] gas, int[] cost) {
         int start = 0, tank = 0, gasSum = 0, costSum = 0;
 

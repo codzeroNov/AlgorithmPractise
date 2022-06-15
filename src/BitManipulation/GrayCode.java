@@ -1,4 +1,4 @@
-package OtherTricky;
+package BitManipulation;
 
 import java.util.LinkedList;
 import java.util.List;

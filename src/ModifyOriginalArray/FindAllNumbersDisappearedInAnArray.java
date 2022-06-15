@@ -1,4 +1,4 @@
-package OtherTricky;
+package ModifyOriginalArray;
 
 import java.util.ArrayList;
 import java.util.List;

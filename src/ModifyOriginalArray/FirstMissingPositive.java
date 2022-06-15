@@ -1,4 +1,4 @@
-package OtherTricky;
+package ModifyOriginalArray;
 
 public class FirstMissingPositive {
     //Given an unsorted integer array, find the smallest missing positive integer.
