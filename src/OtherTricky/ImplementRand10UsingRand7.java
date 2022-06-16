@@ -8,6 +8,7 @@ public class ImplementRand10UsingRand7 {
         Notice that Each test case has one argument n, the number of times that your implemented function rand10 will be called while testing.
     */
     public int rand10() {
+        // https://leetcode.com/problems/implement-rand10-using-rand7/discuss/150301/Three-line-Java-solution-the-idea-can-be-generalized-to-%22Implement-RandM()-Using-RandN()%22
         int res = Integer.MAX_VALUE;
 
         while (res > 40)
