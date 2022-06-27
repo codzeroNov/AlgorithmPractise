@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 
 public class LargestNumber {
-    //Given a list of non negative integers, arrange them such that they form the largest number.
+    //Given a list of non-negative integers, arrange them such that they form the largest number.
     public String largestNumber(int[] nums) {
         if (nums == null || nums.length == 0)
             return "";
@@ -13,7 +13,7 @@ public class LargestNumber {
         for (int i = 0; i < nums.length; i++)
             strNums[i] = String.valueOf(nums[i]);
 
-        Comparator<String> comparator = new Comparator<String>() {
+        Comparator<String> comparator = new Comparator<>() {
             @Override
             public int compare(String o1, String o2) {
                 String s1 = o1 + o2;

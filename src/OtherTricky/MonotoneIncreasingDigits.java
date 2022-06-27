@@ -24,8 +24,4 @@ public class MonotoneIncreasingDigits {
 
             return Integer.parseInt(new String(nums));
     }
-
-    public static void main(String[] args) {
-        new MonotoneIncreasingDigits().monotoneIncreasingDigits(1234);
-    }
 }

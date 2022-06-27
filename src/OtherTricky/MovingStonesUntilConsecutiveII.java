@@ -33,4 +33,21 @@ public class MovingStonesUntilConsecutiveII {
         return new int[]{min, max};
     }
 
+    public int[] numMovesStonesII2(int[] stones) {
+        Arrays.sort(stones);
+        int n = stones.length;
+        int max = Math.max(stones[n - 1] - stones[1] - n + 2, stones[n - 2] - stones[0] - n + 2);// we should skip the first or last interval
+        int i = 0, min = n;
+        for (int j = 0; j < n; j++) {// we need to find a window that contains most of the stones. so (j - i + 1) means the number of stones in the window.
+            while (stones[j] - stones[i] >= n)
+                i++;
+            if (j - i + 1 == n - 1 && stones[j] - stones[i] == n - 2)
+                min = Math.min(min, 2);
+            else
+                min = Math.min(min, n - (j - i + 1));// n - (j - i + 1) means the number of stones outside the window
+        }
+
+        return new int[]{min, max};
+    }
+
 }

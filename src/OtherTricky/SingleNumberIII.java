@@ -21,7 +21,7 @@ public class SingleNumberIII {
             diff ^= n;
         }
 
-        diff &= -diff;// equals ~(diff - 1) = - (diff - 1) - 1 = -diff
+        diff &= -diff;// equals ~(diff - 1) = - (diff - 1) - 1 = -diff, see https://leetcode.com/problems/single-number-iii/discuss/68900/Accepted-C%2B%2BJava-O(n)-time-O(1)-space-Easy-Solution-with-Detail-Explanations
 
         int[] res = {0, 0};
         for (int n : nums) {

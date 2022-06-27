@@ -20,7 +20,11 @@ public class NextGreaterElementIII {
         swap(nums, i, j);
         reverse(nums, i + 1, nums.length-1);
 
-        return Integer.valueOf(String.valueOf(nums));
+        try {
+            return Integer.parseInt(String.valueOf(nums));
+        } catch (NumberFormatException e) {
+            return -1;
+        }
     }
 
     private void reverse(char[] nums, int i, int j) {
