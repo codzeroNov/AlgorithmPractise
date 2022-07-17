@@ -1,4 +1,4 @@
-package SlidingWindow;
+package MonoStack_MonoList;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
